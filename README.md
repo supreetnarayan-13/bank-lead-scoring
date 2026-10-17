@@ -7,6 +7,9 @@ A machine learning app that ranks bank customers by how likely they are to say y
 ## Problem
 A bank phones customers to offer a term deposit (a savings product). About 88% say no, and every call costs time and money. Which customers should the bank call first, and how many calls are worth making?
 
+## Tech
+Python, pandas, NumPy, scikit-learn, joblib, Streamlit, Anthropic Claude API, Git/GitHub, Streamlit Community Cloud.
+
 ## Data
 UCI Bank Marketing dataset (`bank-full.csv`), about 45,000 phone calls.
 Source: Moro, Cortez and Rita (2014), UCI Machine Learning Repository. Used with attribution.
@@ -44,6 +47,22 @@ Lift of 1.6x means the ranking finds 1.6 times more buyers than calling customer
    The Ask page lets you type a question about the data. The answer needs API credit.
    ![Ask page interface](images/ask.png)
 
+## Ask page reference answers
+The Ask page sends Claude conversion rates calculated with pandas and asks it to answer using only those numbers. These are the correct answers, calculated directly from the data, that I will use to check Claude's replies.
+
+| Question | Correct answer (pandas) |
+|---|---|
+| Which job converts best? | student (28.7%) |  
+| Which job converts worst? | blue-collar (7.3%) | 
+| Which month converts best? | mar (52.0%) | 
+| Which education level converts best? | tertiary (15.0%) |  
+| Which marital status converts best? | single (14.9%) |  
+| Which previous campaign outcome converts best? | success (64.7%) |  
+| What is the overall conversion rate? | 11.7% |  
+| What is the conversion rate for students? | 28.7% |  
+| What is the average customer balance? | Not given to Claude; should say it does not have this | 
+| Do customers with a housing loan convert more? | Not given to Claude; should say it does not have this |  
+
 ## Limitations
 - **The data changes over time.** The share of customers who said yes was 6.7% in the training data and 31.6% in the test data. The model learned from older calls and is tested on newer calls that behave very differently, so performance is moderate (ROC-AUC 0.68, 1.6x lift). A random split would give higher scores, but those scores would be less realistic.
 - The data has no date column, so time order is assumed from row position.
@@ -52,5 +71,3 @@ Lift of 1.6x means the ranking finds 1.6 times more buyers than calling customer
 - The Score a lead page keeps some fields fixed (such as day and campaign).
 - The Ask page uses API credit, so it may show an error if credit runs out.
 
-## Tech
-Python, pandas, NumPy, scikit-learn, joblib, Streamlit, Anthropic Claude API, Git/GitHub, Streamlit Community Cloud.
