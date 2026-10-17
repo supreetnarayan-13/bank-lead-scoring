@@ -27,6 +27,7 @@ Source: Moro, Cortez and Rita (2014), UCI Machine Learning Repository. Used with
 | Calling the top 10% of ranked customers | finds 16% of all yes (1.6x lift) |
 | Calling the top 20% of ranked customers | finds 33% of all yes (1.6x lift) |
 | Calling the top 30% of ranked customers | finds 48% of all yes (1.6x lift) |
+   ![Gain curve](images/gain_curve.png)
 
 Lift of 1.6x means the ranking finds 1.6 times more buyers than calling customers at random.
 
@@ -37,6 +38,11 @@ Lift of 1.6x means the ranking finds 1.6 times more buyers than calling customer
 | Call planner | Sliders for cost per call and profit per sale; shows the best number of calls |
 | Score a lead | Enter one customer's details and get a conversion score |
 | Ask | Ask questions in plain English and get answers from Claude |
+   ![Dashboard](images/dashboard.png)
+   ![Call planner](images/planner.png)
+   ![Score a lead](images/score.png)
+   The Ask page lets you type a question about the data. The answer needs API credit.
+   ![Ask page interface](images/ask.png)
 
 ## Limitations
 - **The data changes over time.** The share of customers who said yes was 6.7% in the training data and 31.6% in the test data. The model learned from older calls and is tested on newer calls that behave very differently, so performance is moderate (ROC-AUC 0.68, 1.6x lift). A random split would give higher scores, but those scores would be less realistic.
